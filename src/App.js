@@ -12,12 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = (state) => {
-  console.log('state>>>', state);
-  return {
-    todos: state.todos,
-  };
-};
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
 
 const todoItem = { todoItem: '', done: false };
 
@@ -32,9 +29,7 @@ const App = ({ todos, handleAddTodoItem }) => {
     e.preventDefault();
     handleAddTodoItem(data);
     setTodoItem(todoItem);
-    // alert(JSON.stringify(data));
   };
-  // const handleChange = () => {};
 
   return (
     <div className="app">
