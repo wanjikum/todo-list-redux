@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './redux/reducers';
-import App from './App';
+import { createStore, applyMiddleware } from 'redux';
 
-const store = createStore(rootReducer);
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
+import rootReducer from './redux/reducers';
+import App from './App.container';
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(reduxImmutableStateInvariant())));
 
 ReactDOM.render(
   <Provider store={store}>
